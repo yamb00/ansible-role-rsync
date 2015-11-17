@@ -1,0 +1,9 @@
+---
+  - name: install packages
+    apt: name=rsync state=present
+  
+  - name: activate rsync daemon
+    lineinfile: dest=/etc/default/rsync regexp='^RSYNC_ENABLE' line='RSYNC_ENABLE=true' owner=root group=root mode=0644
+
+  - name: activate rsync daemon
+    lineinfile: dest=/etc/default/rsync regexp='^RSYNC_CONFIG_FILE' line='RSYNC_CONFIG_FILE={{rsync.config_file}}' owner=root group=root mode=0644

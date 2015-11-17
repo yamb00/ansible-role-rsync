@@ -1,0 +1,11 @@
+{% for key,value in rsync.default.iteritems() %}
+{{key|replace("_"," ")}} 		= {{value}}
+{% endfor%}
+
+{% for share in rsync.shares %}
+
+[{{ share.name }}] 
+{% for key,value in share.set.iteritems()%}
+{{key|replace("_"," ")}} = {{value}}
+{% endfor %}
+{% endfor %}

@@ -1,0 +1,8 @@
+{{ rsync.default.log_file }} {
+    rotate 5
+    daily
+    postrotate
+        service rsync restart
+    endscript
+    su root
+}

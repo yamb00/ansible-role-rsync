@@ -1,0 +1,8 @@
+---
+- name: create config dir
+  file: path={{ rsync.config_dir }} state=directory
+
+- name: set config
+  template: src=rsyncd.conf.j2 dest={{ rsync.config_file }} owner=root group=root mode=0655
+  notify:
+    - restart rsync
